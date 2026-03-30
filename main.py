@@ -10,6 +10,11 @@ def get_db_connection():
 app = Flask(__name__)
 app.secret_key = "secret_key"
 
+
+@app.context_processor
+def inject_user():
+    return {'user': session.get('username')}
+
 menu = [
     {"name": "msemen kefta", "price": 620.00, "description": "msemen avec kefta"},
     {"name": "chawarma", "price": 507.99, "description": "chat avec warma"},
